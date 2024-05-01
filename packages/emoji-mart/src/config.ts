@@ -270,7 +270,7 @@ export function getProps(props, defaultProps, element) {
     _props[k] = getProp(k, props, defaultProps, element)
   }
 
-  console.log('new props', { _newProps })
+  console.log('new props', { _props })
 
   return _props
 }
