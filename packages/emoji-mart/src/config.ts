@@ -47,7 +47,7 @@ export function init(options, { caller } = {}) {
 }
 
 async function _init(props) {
-  console.log('init', Data)
+  console.log('init', Data, props)
   initialized = true
 
   // console.log('init reset data')
@@ -116,6 +116,7 @@ async function _init(props) {
         category.target = prevCategory.target || prevCategory
       }
 
+      console.log('init push category', { category })
       Data.categories.push(category)
 
       for (const emoji of category.emojis) {
@@ -268,6 +269,8 @@ export function getProps(props, defaultProps, element) {
   for (let k in defaultProps) {
     _props[k] = getProp(k, props, defaultProps, element)
   }
+
+  console.log('new props', { _newProps })
 
   return _props
 }
