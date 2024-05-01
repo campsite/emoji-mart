@@ -50,8 +50,8 @@ async function _init(props) {
   console.log('init', Data)
   initialized = true
 
-  console.log('init reset data')
-  Data = null
+  // console.log('init reset data')
+  // Data = null
 
   let { emojiVersion, set, locale } = props
   emojiVersion || (emojiVersion = PickerProps.emojiVersion.value)
@@ -86,6 +86,7 @@ async function _init(props) {
   } else {
     Data.categories = Data.categories.filter((c) => {
       const isCustom = !!c.name
+      console.log('init categories filtering', { c, isCustom })
       if (!isCustom) return true
 
       return false
