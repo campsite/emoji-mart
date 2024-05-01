@@ -50,6 +50,9 @@ async function _init(props) {
   console.log('init', Data)
   initialized = true
 
+  console.log('init reset data')
+  Data = null
+
   let { emojiVersion, set, locale } = props
   emojiVersion || (emojiVersion = PickerProps.emojiVersion.value)
   set || (set = PickerProps.set.value)
