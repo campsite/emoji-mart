@@ -50,15 +50,15 @@ async function _init(props) {
   console.log('init', Data, props)
   initialized = true
 
-  console.log('init reset data')
-  Data = null
+  // console.log('init reset data')
+  // Data = null
 
   let { emojiVersion, set, locale } = props
   emojiVersion || (emojiVersion = PickerProps.emojiVersion.value)
   set || (set = PickerProps.set.value)
   locale || (locale = PickerProps.locale.value)
 
-  if (true) {
+  if (!Data) {
     Data =
       (typeof props.data === 'function' ? await props.data() : props.data) ||
       (await fetchJSON(
