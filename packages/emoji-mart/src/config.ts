@@ -84,6 +84,7 @@ async function _init(props) {
 
     Data.originalCategories = Data.categories
   } else {
+    console.log('init else', Data.originalCategories)
     Data.categories = Data.categories.filter((c) => {
       const isCustom = !!c.name
       console.log('init categories filtering', { c, isCustom })
@@ -126,6 +127,10 @@ async function _init(props) {
   }
 
   if (props.categories) {
+    console.log('init override categories', {
+      categories: Data.categories,
+      originalCategories: Data.originalCategories,
+    })
     Data.categories = Data.originalCategories
       .filter((c) => {
         return props.categories.indexOf(c.id) != -1
