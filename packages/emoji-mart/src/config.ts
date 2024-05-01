@@ -280,6 +280,8 @@ export function getProp(propName, props, defaultProps, element) {
       ? props[propName]
       : null)
 
+  console.log('getProp', { propName, props, defaultProps, value, defaults })
+
   if (!defaults) {
     return value
   }
