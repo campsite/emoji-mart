@@ -58,7 +58,7 @@ async function _init(props) {
   set || (set = PickerProps.set.value)
   locale || (locale = PickerProps.locale.value)
 
-  if (!Data) {
+  if (true) {
     Data =
       (typeof props.data === 'function' ? await props.data() : props.data) ||
       (await fetchJSON(
