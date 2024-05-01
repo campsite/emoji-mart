@@ -259,10 +259,10 @@ async function _init(props) {
     }
   }
 
-  if (resetSearchIndex) {
-    console.log('init reset search index')
-    SearchIndex.reset()
-  }
+  // if (resetSearchIndex) {
+  console.log('init reset search index')
+  SearchIndex.reset()
+  // }
 
   initCallback()
 }
