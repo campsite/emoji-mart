@@ -36,7 +36,8 @@ async function search(value, { maxResults, caller } = {}) {
 
   if (!values.length) return
 
-  let pool = Pool || (Pool = Object.values(Data.emojis))
+  // let pool = Pool || (Pool = Object.values(Data.emojis))
+  let pool = Object.values(Data.emojis)
   let results, scores
 
   for (const value of values) {

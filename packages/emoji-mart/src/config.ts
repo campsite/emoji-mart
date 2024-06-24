@@ -47,7 +47,11 @@ export function init(options, { caller } = {}) {
 }
 
 async function _init(props) {
+  console.log('init', Data, props)
   initialized = true
+
+  // console.log('init reset data')
+  // Data = null
 
   let { emojiVersion, set, locale } = props
   emojiVersion || (emojiVersion = PickerProps.emojiVersion.value)
@@ -80,8 +84,10 @@ async function _init(props) {
 
     Data.originalCategories = Data.categories
   } else {
+    console.log('init else', Data.originalCategories)
     Data.categories = Data.categories.filter((c) => {
       const isCustom = !!c.name
+      console.log('init categories filtering', { c, isCustom })
       if (!isCustom) return true
 
       return false
@@ -111,6 +117,7 @@ async function _init(props) {
         category.target = prevCategory.target || prevCategory
       }
 
+      console.log('init push category', { category })
       Data.categories.push(category)
 
       for (const emoji of category.emojis) {
@@ -120,6 +127,10 @@ async function _init(props) {
   }
 
   if (props.categories) {
+    console.log('init override categories', {
+      categories: Data.categories,
+      originalCategories: Data.originalCategories,
+    })
     Data.categories = Data.originalCategories
       .filter((c) => {
         return props.categories.indexOf(c.id) != -1
@@ -248,9 +259,10 @@ async function _init(props) {
     }
   }
 
-  if (resetSearchIndex) {
-    SearchIndex.reset()
-  }
+  // if (resetSearchIndex) {
+  console.log('init reset search index')
+  SearchIndex.reset()
+  // }
 
   initCallback()
 }
@@ -263,6 +275,8 @@ export function getProps(props, defaultProps, element) {
     _props[k] = getProp(k, props, defaultProps, element)
   }
 
+  console.log('new props', { _props })
+
   return _props
 }
 
@@ -273,6 +287,8 @@ export function getProp(propName, props, defaultProps, element) {
     (props[propName] != null && props[propName] != undefined
       ? props[propName]
       : null)
+
+  console.log('getProp', { propName, props, defaultProps, value, defaults })
 
   if (!defaults) {
     return value
